@@ -53,14 +53,14 @@ jobs:
         allure generate reports -o allure-report --clean
 
     - name: Upload des résultats Allure (JSON)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: allure-report
         path: allure-report/
         retention-days: 30
 
     - name : Upload Allure HTML Report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: allure-html-report
         path: allure-report/
