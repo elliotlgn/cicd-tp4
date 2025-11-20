@@ -40,7 +40,7 @@ jobs:
     - name: Install Allure Commandline
       run: |
         npm install -g allure-commandline
-        allure --version=2.21.0
+        allure --version
 
     - name: Run tests with Allure reporting
       run: |
@@ -50,16 +50,18 @@ jobs:
     - name: Generate Allure report
       if: always()
       run: |
-        allure generate reports -o allure-report --clean
+        allure generate reports --clean -o allure-report
 
     - name: Upload des résultats Allure (JSON)
+      if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: allure-report
-        path: allure-report/
+        name: allure-results
+        path: reports/
         retention-days: 30
 
     - name : Upload Allure HTML Report
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: allure-html-report
